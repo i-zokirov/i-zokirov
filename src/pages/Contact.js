@@ -31,7 +31,7 @@ import FAIcons from '../components/FAIcons';
 const Contact = () => {
   return (
     <Container
-      height={'100%'}
+      height={'100vh'}
       maxW="full"
       mt={0}
       centerContent
@@ -61,8 +61,8 @@ const Contact = () => {
                         spacing={3}
                         style={{
                           display: 'flex',
-                          justifyContent: 'left',
-                          alignItems: 'left',
+                          justifyContent: 'center',
+                          alignItems: 'center',
                         }}
                       >
                         <Button
@@ -105,7 +105,9 @@ const Contact = () => {
                       alignItems="flex-start"
                     >
                       <IconButton
-                        aria-label="facebook"
+                        aria-label="linkedin account"
+                        as="a"
+                        href="https://www.linkedin.com/in/ikboljon-zokirov"
                         variant="ghost"
                         size="lg"
                         icon={
@@ -116,7 +118,9 @@ const Contact = () => {
                         }
                       />
                       <IconButton
-                        aria-label="discord"
+                        aria-label="instagram account"
+                        as="a"
+                        href="https://instagram.com/_izokirov?igshid=YmMyMTA2M2Y="
                         variant="ghost"
                         size="lg"
                         icon={
@@ -127,7 +131,9 @@ const Contact = () => {
                         }
                       />
                       <IconButton
-                        aria-label="github"
+                        aria-label="github account"
+                        as="a"
+                        href="https://github.com/i-zokirov"
                         variant="ghost"
                         size="lg"
                         icon={
@@ -138,8 +144,10 @@ const Contact = () => {
                         }
                       />
                       <IconButton
-                        aria-label="github"
+                        aria-label="telegram blog"
                         variant="ghost"
+                        as="a"
+                        href="https://t.me/ikboljonzokirov"
                         size="lg"
                         icon={
                           <FAIcons
@@ -193,7 +201,7 @@ const Contact = () => {
                         <FormControl id="name" float="right">
                           <Button
                             colorScheme="teal"
-                            variant="outline"
+                            variant="solid"
                             _hover={{}}
                           >
                             Send Message

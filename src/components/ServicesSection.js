@@ -1,15 +1,8 @@
 import React from 'react';
-import {
-  Container,
-  Stack,
-  Heading,
-  Text,
-  Icon,
-  Image,
-  Box,
-} from '@chakra-ui/react';
+import { Container, Stack, Heading, Text } from '@chakra-ui/react';
 import Feature from './Feature';
 import FAIcons from './FAIcons';
+import './services.css';
 
 const whatIDo = [
   {
@@ -73,6 +66,7 @@ const ServicesSection = () => {
       >
         {whatIDo.map(item => (
           <Feature
+            className="service-card"
             justifyContent="center"
             align="center"
             p={4}

@@ -24,16 +24,11 @@ const Footer = () => {
         align={{ base: 'center', md: 'center' }}
       >
         <Stack direction={'row'} spacing={6}>
-          <Link as={RouterLink} to={'#'}>
+          <Link as={RouterLink} to={'/'}>
             Home
           </Link>
-          <Link as={RouterLink} to={'#'}>
-            About
-          </Link>
-          <Link as={RouterLink} to={'#'}>
-            Blog
-          </Link>
-          <Link as={RouterLink} to={'#'}>
+
+          <Link as={RouterLink} to={'/contact'}>
             Contact
           </Link>
         </Stack>

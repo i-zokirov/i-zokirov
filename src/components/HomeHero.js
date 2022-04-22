@@ -115,7 +115,7 @@ const HomeHero = () => {
               color="current"
               icon={
                 <a
-                  href="/"
+                  href="https://www.linkedin.com/in/ikboljon-zokirov"
                   className="social-buttons__button social-button social-button--linkedin"
                   aria-label="Linkedin"
                 >
@@ -131,7 +131,7 @@ const HomeHero = () => {
               marginLeft="2"
               icon={
                 <a
-                  href="/"
+                  href="https://instagram.com/_izokirov?igshid=YmMyMTA2M2Y="
                   className="social-buttons__button social-button social-button--instagram"
                   aria-label="Instagram"
                 >
@@ -147,7 +147,7 @@ const HomeHero = () => {
               marginLeft="2"
               icon={
                 <a
-                  href="/"
+                  href="https://github.com/i-zokirov"
                   className="social-buttons__button social-button social-button--github"
                   aria-label="github"
                 >
@@ -163,7 +163,7 @@ const HomeHero = () => {
               marginLeft="2"
               icon={
                 <a
-                  href="/"
+                  href="https://t.me/ikboljonzokirov"
                   className="social-buttons__button social-button social-button--telegram"
                   aria-label="telegram"
                 >

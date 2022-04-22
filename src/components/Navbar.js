@@ -4,7 +4,6 @@ import {
   Flex,
   Text,
   IconButton,
-  Button,
   Stack,
   Collapse,
   Icon,
@@ -24,7 +23,7 @@ import {
 } from '@chakra-ui/icons';
 import { Link as RouterLink } from 'react-router-dom';
 import ColorModeSwitcher from '../ColorModeSwitcher';
-import FAIcons from './FAIcons';
+
 const NAV_ITEMS = [
   {
     label: 'Meet Ikboljon',
@@ -60,10 +59,10 @@ const NAV_ITEMS = [
   //       },
   //     ],
   //   },
-  {
-    label: 'MyBlog',
-    href: '/blog',
-  },
+  // {
+  //   label: 'MyBlog',
+  //   href: '/blog',
+  // },
   {
     label: 'Contact',
     href: '/contact',
@@ -112,7 +111,7 @@ const Navbar = () => {
               className="fa-solid fa-terminal"
             ></i>{' '}
             <span> </span>
-            i-zokirov.me
+            izokirov
           </Text>
 
           <Flex display={{ base: 'none', md: 'flex' }} ml={10}>
