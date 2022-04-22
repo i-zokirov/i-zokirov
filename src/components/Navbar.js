@@ -24,6 +24,7 @@ import {
 } from '@chakra-ui/icons';
 import { Link as RouterLink } from 'react-router-dom';
 import ColorModeSwitcher from '../ColorModeSwitcher';
+import FAIcons from './FAIcons';
 const NAV_ITEMS = [
   {
     label: 'Meet Ikboljon',
@@ -100,11 +101,18 @@ const Navbar = () => {
         </Flex>
         <Flex flex={{ base: 1 }} justify={{ base: 'center', md: 'start' }}>
           <Text
+            fontSize="sm"
+            fontWeight={'bold'}
             textAlign={useBreakpointValue({ base: 'center', md: 'left' })}
-            fontFamily={'heading'}
+            fontFamily={'monospace'}
             color={useColorModeValue('gray.900', 'white')}
           >
-            i-zokirov
+            <i
+              style={{ color: '#48BB78' }}
+              className="fa-solid fa-terminal"
+            ></i>{' '}
+            <span> </span>
+            i-zokirov.me
           </Text>
 
           <Flex display={{ base: 'none', md: 'flex' }} ml={10}>

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import {
   Container,
   Stack,
@@ -11,23 +11,52 @@ import {
   Icon,
   IconButton,
   createIcon,
-  useColorModeValue,
+  useColorMode,
+  Code,
 } from '@chakra-ui/react';
+import Feature from './Feature';
+
+const codeStyle = {
+  marginTop: '0px',
+  marginBottom: '0px',
+  paddingTop: '0px',
+  paddingBottom: '0px',
+};
 
 const HomeHero = () => {
+  const [matches, setMatches] = useState(
+    window.matchMedia('(min-width: 768px)').matches
+  );
+
+  useEffect(() => {
+    window
+      .matchMedia('(min-width: 768px)')
+      .addEventListener('change', e => setMatches(e.matches));
+  }, []);
+
+  const { colorMode } = useColorMode();
   return (
     <Container maxW={'7xl'}>
       <Stack
         align={'center'}
         justify={'center'}
         spacing={{ base: 8, md: 10 }}
-        py={{ base: 20, md: 28 }}
+        // py={{ base: 20, md: 28 }}
+        py={{ base: 8, md: 10 }}
         direction={{ base: 'column', md: 'row' }}
       >
         <Stack flex={1} spacing={{ base: 5, md: 10 }}>
-          <Heading lineHeight={1.1} fontWeight={600}>
-            <Text as={'span'} color={'green.400'}>
-              Hi! My name is
+          <Heading
+            lineHeight={1.1}
+            fontWeight={600}
+            align={matches ? 'left' : 'center'}
+          >
+            <Text
+              as={'span'}
+              style={{ fontFamily: 'monospace' }}
+              color={'green.400'}
+            >
+              Hello World!
             </Text>
           </Heading>
           <Heading
@@ -35,27 +64,13 @@ const HomeHero = () => {
             fontWeight={650}
             fontSize={{ base: '3xl', sm: '4xl', lg: '6xl' }}
           >
-            <Text
-              as={'span'}
-              color={'gray.400'}
-              position={'relative'}
-              //   _after={{
-              //     content: "''",
-              //     width: 'full',
-              //     height: '30%',
-              //     position: 'absolute',
-              //     bottom: 1,
-              //     left: 0,
-              //     bg: 'green.400',
-              //     zIndex: -1,
-              //   }}
-            >
-              Ikboljon Zokirov
+            <Text as={'p'} color={'gray.400'} position={'relative'}>
+              I’m Ikboljon
             </Text>
-            <br />
+
             <Text
               color={'gray.500'}
-              as={'span'}
+              as={'p'}
               position={'relative'}
               _after={{
                 content: "''",
@@ -78,6 +93,7 @@ const HomeHero = () => {
           <Stack
             spacing={{ base: 4, sm: 6 }}
             direction={{ base: 'column', sm: 'row' }}
+            align={matches ? 'left' : 'center'}
           >
             <Button
               //   rounded={'full'}
@@ -88,18 +104,74 @@ const HomeHero = () => {
               px={6}
               //   _hover={{ bg: 'gray.300' }}
             >
-              Learn more
+              Download CV
             </Button>
-            {/* <Button
-              rounded={'full'}
-              size={'lg'}
-              fontWeight={'normal'}
-              px={6}
-              leftIcon={<PlayIcon h={4} w={4} color={'gray.300'} />}
-            >
-              How It Works
-            </Button> */}
           </Stack>
+          <Box align={matches ? 'left' : 'center'}>
+            <IconButton
+              size="lg"
+              fontSize="30px"
+              variant="ghost"
+              color="current"
+              icon={
+                <a
+                  href="/"
+                  className="social-buttons__button social-button social-button--linkedin"
+                  aria-label="Linkedin"
+                >
+                  <i className="fa-brands fa-linkedin"></i>
+                </a>
+              }
+            />
+            <IconButton
+              size="lg"
+              fontSize="30px"
+              variant="ghost"
+              color="current"
+              marginLeft="2"
+              icon={
+                <a
+                  href="/"
+                  className="social-buttons__button social-button social-button--instagram"
+                  aria-label="Instagram"
+                >
+                  <i className="fa-brands fa-instagram"></i>
+                </a>
+              }
+            />
+            <IconButton
+              size="lg"
+              fontSize="30px"
+              variant="ghost"
+              color="current"
+              marginLeft="2"
+              icon={
+                <a
+                  href="/"
+                  className="social-buttons__button social-button social-button--github"
+                  aria-label="github"
+                >
+                  <i className="fa-brands fa-github"></i>
+                </a>
+              }
+            />
+            <IconButton
+              size="lg"
+              fontSize="30px"
+              variant="ghost"
+              color="current"
+              marginLeft="2"
+              icon={
+                <a
+                  href="/"
+                  className="social-buttons__button social-button social-button--telegram"
+                  aria-label="telegram"
+                >
+                  <i className="fa-brands fa-telegram"></i>
+                </a>
+              }
+            />
+          </Box>
         </Stack>
         <Flex
           flex={1}
@@ -108,7 +180,7 @@ const HomeHero = () => {
           position={'relative'}
           w={'full'}
         >
-          <Blob
+          {/* <Blob
             w={'150%'}
             h={'150%'}
             position={'absolute'}
@@ -116,16 +188,78 @@ const HomeHero = () => {
             left={0}
             zIndex={-1}
             color={useColorModeValue('green.50', 'green.400')}
-          />
+          /> */}
           <Box
             position={'relative'}
-            height={'300px'}
+            height={'auto'}
             rounded={'2xl'}
             boxShadow={'2xl'}
             width={'full'}
             overflow={'hidden'}
           >
-            <IconButton
+            <Feature height={'auto'} width={'full'} p={6} rounded={'2xl'}>
+              <Stack direction="column">
+                <Code
+                  variant="subtle"
+                  colorScheme={colorMode === 'light' ? 'yellow' : 'teal'}
+                  style={codeStyle}
+                >
+                  1 class Person &#123;{' '}
+                </Code>
+                <Code
+                  variant="subtle"
+                  colorScheme={colorMode === 'light' ? 'yellow' : 'teal'}
+                  style={codeStyle}
+                >
+                  2 &nbsp; constructer() &#123;
+                </Code>
+                <Code
+                  variant="subtle"
+                  colorScheme={colorMode === 'light' ? 'yellow' : 'teal'}
+                  style={codeStyle}
+                >
+                  3 &nbsp; &nbsp; this.name = "Ikboljon Zokirov"
+                </Code>
+                <Code
+                  variant="subtle"
+                  colorScheme={colorMode === 'light' ? 'yellow' : 'teal'}
+                  style={codeStyle}
+                >
+                  4 &nbsp; &nbsp; this.traits = ["Developer"]
+                </Code>
+                <Code
+                  variant="subtle"
+                  colorScheme={colorMode === 'light' ? 'yellow' : 'teal'}
+                  style={codeStyle}
+                >
+                  5 &nbsp; &nbsp; this.age = this.age = new Date().getFullYear()
+                  - 2000;
+                </Code>
+                <Code
+                  variant="subtle"
+                  colorScheme={colorMode === 'light' ? 'yellow' : 'teal'}
+                  style={codeStyle}
+                >
+                  6 &nbsp; &nbsp; this.hobbies = ["Coding"]
+                </Code>
+                <Code
+                  variant="subtle"
+                  colorScheme={colorMode === 'light' ? 'yellow' : 'teal'}
+                  style={codeStyle}
+                >
+                  7 &nbsp; &#125;
+                </Code>
+                <Code
+                  variant="subtle"
+                  colorScheme={colorMode === 'light' ? 'yellow' : 'teal'}
+                  style={codeStyle}
+                >
+                  8 &#125;
+                </Code>
+              </Stack>
+            </Feature>
+
+            {/* <IconButton
               aria-label={'Play Button'}
               variant={'ghost'}
               _hover={{ bg: 'transparent' }}
@@ -146,7 +280,7 @@ const HomeHero = () => {
               src={
                 'https://images.unsplash.com/photo-1499951360447-b19be8fe80f5?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=800&q=80'
               }
-            />
+            /> */}
           </Box>
         </Flex>
       </Stack>

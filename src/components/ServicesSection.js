@@ -21,22 +21,42 @@ const whatIDo = [
     className: 'fa-solid fa-terminal',
   },
   {
+    title: 'Chatbot Development',
+    className: 'fa-solid fa-robot',
+  },
+  {
     title: 'API Development & Integration',
     className: 'fa-solid fa-circle-nodes',
+  },
+  {
+    title: 'Database Design & Maintenance',
+    className: 'fa-solid fa-database',
+  },
+  {
+    title: 'Cloud Services',
+    className: 'fa-solid fa-cloud',
   },
 ];
 
 const ServicesSection = () => {
   return (
-    <Container height={'100vh'} maxW={'7xl'} style={{ marginTop: '20px' }}>
+    <Container maxW={'7xl'} style={{ marginTop: '20px' }}>
       <Stack
         spacing={{ base: 8, md: 10 }}
         as={Container}
         maxW={'3xl'}
         textAlign={'center'}
       >
-        <Heading fontSize={'3xl'}>Things I love</Heading>
-        <Text color={'gray.600'} fontSize={'xl'}>
+        <Heading lineHeight={1.1} fontWeight={600}>
+          <Text
+            as={'span'}
+            style={{ fontFamily: 'monospace' }}
+            color={'green.400'}
+          >
+            Things I love
+          </Text>
+        </Heading>
+        <Text color={'gray.500'} fontSize={'xl'}>
           Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam
           nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat,
           sed diam voluptua.
@@ -46,8 +66,9 @@ const ServicesSection = () => {
         style={{
           display: 'flex',
           flexDirection: 'row',
-          justifyContent: 'space-around',
+          justifyContent: 'center',
           padding: '40px',
+          flexWrap: 'wrap',
         }}
       >
         {whatIDo.map(item => (
@@ -57,24 +78,31 @@ const ServicesSection = () => {
             p={4}
             radius={'20px'}
             width={300}
-            height={300}
+            height={'auto'}
+            style={{ margin: '20px' }}
+            key={item.title}
           >
-            <div
+            <span
               style={{
                 //   backgroundColor: 'RGBA(0, 0, 0, 0.04)',
-                fontSize: '80px',
+                fontSize: '60px',
                 justifyContent: 'center',
                 alignItems: 'center',
                 display: 'flex',
                 borderRadius: '50%',
                 width: '150px',
-                height: '150px',
-                boxShadow: 'inherit',
+                height: '160px',
+                // boxShadow: 'inherit',
+                flexDirection: 'column',
               }}
             >
               <FAIcons className={item.className} />
-            </div>
-            <Heading fontSize={'3xl'}>{item.title}</Heading>
+            </span>
+            <Heading fontSize={'xl'}>{item.title}</Heading>
+            <Text color={'gray.500'} fontSize={'md'}>
+              Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam
+              nonumy eirmod.
+            </Text>
           </Feature>
         ))}
       </Stack>
