@@ -111,7 +111,7 @@ const Navbar = () => {
               className="fa-solid fa-terminal"
             ></i>{' '}
             <span> </span>
-            izokirov
+            <RouterLink to="/">izokirov</RouterLink>
           </Text>
 
           <Flex display={{ base: 'none', md: 'flex' }} ml={10}>
@@ -125,6 +125,7 @@ const Navbar = () => {
           direction={'row'}
           spacing={6}
         >
+          <ColorModeSwitcher />
           {/* <Button
             as={'a'}
             fontSize={'sm'}
@@ -134,7 +135,7 @@ const Navbar = () => {
           >
             Sign In
           </Button> */}
-          <ColorModeSwitcher />
+
           {/* <Button
             display={{ base: 'none', md: 'inline-flex' }}
             fontSize={'sm'}
@@ -211,12 +212,13 @@ const DesktopNav = () => {
 const DesktopSubNav = ({ label, href, subLabel }) => {
   return (
     <Link
-      href={href}
+      to={href}
       role={'group'}
       display={'block'}
       p={2}
       rounded={'md'}
       _hover={{ bg: useColorModeValue('pink.50', 'gray.900') }}
+      as={RouterLink}
     >
       <Stack direction={'row'} align={'center'}>
         <Box>
@@ -266,8 +268,8 @@ const MobileNavItem = ({ label, children, href }) => {
     <Stack spacing={4} onClick={children && onToggle}>
       <Flex
         py={2}
-        as={Link}
-        href={href ?? '#'}
+        as={RouterLink}
+        to={href ?? '#'}
         justify={'space-between'}
         align={'center'}
         _hover={{
