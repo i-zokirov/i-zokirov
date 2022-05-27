@@ -1,0 +1,30 @@
+.project-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 25px;
+}
+
+.project-card-body {
+  display: flex;
+  flex-direction: column;
+  justify-content: left;
+}
+
+.project-card-footer {
+  display: flex;
+  justify-content: left;
+  flex-wrap: wrap;
+  font-family: monospace;
+}
+
+.project-card-footer p {
+  margin: 5px;
+}
+
+.project-card {
+  transition: all 0.2s ease-in-out;
+}
+.project-card:hover {
+  transform: scale(1.1);
+}

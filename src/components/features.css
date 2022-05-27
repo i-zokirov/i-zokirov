@@ -1,0 +1,22 @@
+.project-container-right {
+  margin-left: '-40px';
+  margin-top: '30px';
+  z-index: 9999;
+}
+
+@media only screen and (max-width: 600px) {
+  .project-container-left {
+    margin-right: '0';
+  }
+  .project-container-right {
+    margin-left: '0';
+    color: 'green';
+  }
+}
+
+/* .hover {
+  opacity: 0.5;
+}
+.hover::hover {
+  opacity: 1;
+} */
