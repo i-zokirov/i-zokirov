@@ -15,6 +15,7 @@ Here are some ideas to get you started:
 -->
 - 🌱 I’m currently learning advanced concepts on Nodejs and Cloud engineering
 - 👯 I’m looking to collaborate on developing full stack single page applications
+- 🔭 I’m currently working on WorkXpress[https://github.com/i-zokirov/workxpress-crm] - CRM tool designed for educational institutions.
 - 📫 How to reach me: Email - izokirov@outlook.com
 
 
