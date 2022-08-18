@@ -1,222 +1,188 @@
 import React from 'react';
 import {
-  Container,
-  Flex,
   Box,
   Heading,
   Text,
   IconButton,
   Button,
-  VStack,
-  HStack,
-  Wrap,
-  WrapItem,
   FormControl,
   FormLabel,
   Input,
   InputGroup,
   InputLeftElement,
   Textarea,
+  SimpleGrid,
+  useMediaQuery,
 } from '@chakra-ui/react';
-import {
-  MdPhone,
-  MdEmail,
-  MdLocationOn,
-  MdFacebook,
-  MdOutlineEmail,
-} from 'react-icons/md';
-import { BsGithub, BsDiscord, BsPerson } from 'react-icons/bs';
+
+import { BsPerson } from 'react-icons/bs';
 import Feature from '../components/Feature';
 import FAIcons from '../components/FAIcons';
+import socialLinks from '../socialLinks';
+
 const Contact = () => {
+  const [isMobile] = useMediaQuery('(max-width: 900px)');
   return (
-    <Container
-      height={'100vh'}
-      maxW="full"
-      mt={0}
-      centerContent
-      overflow="hidden"
+    <Box
+      style={{
+        height: '100vh',
+        width: '100%',
+        marginTop: '10vh',
+      }}
     >
-      <Flex>
+      <Box
+        style={{
+          display: 'flex',
+          justifyContent: 'center',
+          alignItems: 'center',
+        }}
+      >
         <Feature
           borderRadius="lg"
-          m={{ sm: 4, md: 16, lg: 10 }}
-          p={{ sm: 5, md: 5, lg: 16 }}
+          style={{
+            height: isMobile ? 'auto' : '70vh',
+            width: 'auto',
+            padding: '20px',
+          }}
         >
-          <Box
-          //   bg="#A0AEC0"
-          // color="white"
-          >
-            <Box p={4}>
-              <Wrap spacing={{ base: 20, sm: 3, md: 5, lg: 20 }}>
-                <WrapItem>
-                  <Box>
-                    <Heading>Contact</Heading>
-                    <Text mt={{ sm: 3, md: 3, lg: 5 }} color="gray.500">
-                      Fill up the form below to contact
-                    </Text>
-                    <Box py={{ base: 5, sm: 5, md: 8, lg: 10 }}>
-                      <VStack
-                        pl={0}
-                        spacing={3}
-                        style={{
-                          display: 'flex',
-                          justifyContent: 'center',
-                          alignItems: 'center',
-                        }}
-                      >
-                        <Button
-                          size="md"
-                          height="48px"
-                          width="200px"
-                          variant="ghost"
-                          style={{ textAlign: 'left' }}
-                          _hover={{ border: '2px solid #1C6FEB' }}
-                          leftIcon={
-                            <FAIcons
-                              className={'fa-solid fa-phone'}
-                              size="20px"
-                            />
-                          }
-                        >
-                          +48 519 146 293
-                        </Button>
-                        <Button
-                          size="md"
-                          height="48px"
-                          width="200px"
-                          variant="ghost"
-                          _hover={{ border: '2px solid #1C6FEB' }}
-                          leftIcon={
-                            <FAIcons
-                              className={'fa-solid fa-envelope'}
-                              size="20px"
-                            />
-                          }
-                        >
-                          izokirov@outlook.com
-                        </Button>
-                      </VStack>
-                    </Box>
-                    <HStack
-                      mt={{ lg: 5, md: 5 }}
-                      spacing={5}
-                      px={2}
-                      alignItems="flex-start"
-                    >
-                      <IconButton
-                        aria-label="linkedin account"
-                        as="a"
-                        href="https://www.linkedin.com/in/ikboljon-zokirov"
-                        variant="ghost"
-                        size="lg"
-                        icon={
-                          <FAIcons
-                            className={'fa-brands fa-linkedin'}
-                            size="28px"
-                          />
-                        }
-                      />
-                      <IconButton
-                        aria-label="instagram account"
-                        as="a"
-                        href="https://instagram.com/_izokirov?igshid=YmMyMTA2M2Y="
-                        variant="ghost"
-                        size="lg"
-                        icon={
-                          <FAIcons
-                            className={'fa-brands fa-instagram'}
-                            size="28px"
-                          />
-                        }
-                      />
-                      <IconButton
-                        aria-label="github account"
-                        as="a"
-                        href="https://github.com/i-zokirov"
-                        variant="ghost"
-                        size="lg"
-                        icon={
-                          <FAIcons
-                            className={'fa-brands fa-github'}
-                            size="28px"
-                          />
-                        }
-                      />
-                      <IconButton
-                        aria-label="telegram blog"
-                        variant="ghost"
-                        as="a"
-                        href="https://t.me/ikboljonzokirov"
-                        size="lg"
-                        icon={
-                          <FAIcons
-                            className={'fa-brands fa-telegram'}
-                            size="28px"
-                          />
-                        }
-                      />
-                    </HStack>
-                  </Box>
-                </WrapItem>
-                <WrapItem>
-                  <Box bg="white" borderRadius="lg">
-                    <Box m={5} color="#0B0E3F">
-                      <VStack spacing={5}>
-                        <FormControl id="name">
-                          <FormLabel>Your Name</FormLabel>
-                          <InputGroup borderColor="#E0E1E7">
-                            <InputLeftElement
-                              pointerEvents="none"
-                              children={<BsPerson color="gray.800" />}
-                            />
-                            <Input type="text" size="md" />
-                          </InputGroup>
-                        </FormControl>
-                        <FormControl id="name">
-                          <FormLabel>Mail</FormLabel>
-                          <InputGroup borderColor="#E0E1E7">
-                            <InputLeftElement
-                              pointerEvents="none"
-                              children={
-                                <FAIcons
-                                  className={'fa-solid fa-envelope'}
-                                  size="20px"
-                                />
-                              }
-                            />
-                            <Input type="text" size="md" />
-                          </InputGroup>
-                        </FormControl>
-                        <FormControl id="name">
-                          <FormLabel>Message</FormLabel>
-                          <Textarea
-                            borderColor="gray.300"
-                            _hover={{
-                              borderRadius: 'gray.300',
-                            }}
-                            placeholder="message"
-                          />
-                        </FormControl>
-                        <FormControl id="name" float="right">
-                          <Button
-                            colorScheme="teal"
-                            variant="solid"
-                            _hover={{}}
-                          >
-                            Send Message
-                          </Button>
-                        </FormControl>
-                      </VStack>
-                    </Box>
-                  </Box>
-                </WrapItem>
-              </Wrap>
+          <SimpleGrid columns={isMobile ? 1 : 2}>
+            <Box
+              style={{
+                padding: '0px 20px 0px 20px ',
+              }}
+            >
+              <Heading>Contact</Heading>
+
+              <Text
+                mt={{ sm: 3, md: 3, lg: 5 }}
+                color="gray.500"
+                style={{ marginTop: !isMobile ? '80px' : '' }}
+              >
+                Leave your message and I will get back to you 🙂
+              </Text>
+
+              <Box
+                style={{
+                  display: 'flex',
+                  justifyContent: 'flex-start',
+                  flexDirection: 'column',
+                  alignItems: 'flex-start',
+                }}
+              >
+                <Button
+                  size="md"
+                  height="48px"
+                  width="auto"
+                  variant="ghost"
+                  _hover={{ border: '2px solid #1C6FEB' }}
+                  leftIcon={
+                    <FAIcons className={'fa-solid fa-phone'} size="20px" />
+                  }
+                >
+                  +48 519 146 293
+                </Button>
+                <Button
+                  size="md"
+                  height="48px"
+                  width="auto"
+                  variant="ghost"
+                  _hover={{ border: '2px solid #1C6FEB' }}
+                  leftIcon={
+                    <FAIcons className={'fa-solid fa-envelope'} size="20px" />
+                  }
+                >
+                  izokirov@outlook.com
+                </Button>
+              </Box>
+
+              <Box
+                style={{
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'flex-start',
+                  padding: '20px',
+                }}
+              >
+                {socialLinks.map(item => {
+                  return (
+                    <IconButton
+                      style={{
+                        margin: '5px',
+                      }}
+                      aria-label={`${item.name} account`}
+                      key={item.name}
+                      as="a"
+                      href={item.link}
+                      variant="ghost"
+                      size="lg"
+                      icon={
+                        <FAIcons
+                          className={item.iconClass}
+                          style={{ fontSize: '28px' }}
+                        />
+                      }
+                    />
+                  );
+                })}
+              </Box>
             </Box>
-          </Box>
+
+            <Box
+              borderRadius="lg"
+              style={{
+                marginTop: !isMobile ? '80px' : 'auto',
+                padding: '0px 20px 20px 20px ',
+              }}
+            >
+              <FormControl id="name" m={2} style={{ width: '100%' }}>
+                <FormLabel>Your Name</FormLabel>
+                <InputGroup borderColor="#E0E1E7">
+                  <InputLeftElement
+                    pointerEvents="none"
+                    children={<BsPerson color="gray.800" />}
+                  />
+                  <Input type="text" size="md" placeholder="Jon Doe" />
+                </InputGroup>
+              </FormControl>
+
+              <FormControl id="name" m={2}>
+                <FormLabel>Mail</FormLabel>
+                <InputGroup borderColor="#E0E1E7">
+                  <InputLeftElement
+                    pointerEvents="none"
+                    children={
+                      <FAIcons className={'fa-solid fa-envelope'} size="20px" />
+                    }
+                  />
+                  <Input
+                    type="text"
+                    size="md"
+                    placeholder="jon.doe@example.com"
+                  />
+                </InputGroup>
+              </FormControl>
+
+              <FormControl id="name" m={2}>
+                <FormLabel>Message</FormLabel>
+                <Textarea
+                  borderColor="gray.300"
+                  _hover={{
+                    borderRadius: 'gray.300',
+                  }}
+                  placeholder="Start typing ..."
+                />
+              </FormControl>
+
+              <FormControl id="name" m={2}>
+                <Button colorScheme="teal" variant="solid" _hover={{}}>
+                  Send Message
+                </Button>
+              </FormControl>
+            </Box>
+          </SimpleGrid>
         </Feature>
-      </Flex>
-    </Container>
+      </Box>
+    </Box>
   );
 };
 

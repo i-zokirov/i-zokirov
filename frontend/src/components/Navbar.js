@@ -14,6 +14,7 @@ import {
   useColorModeValue,
   useBreakpointValue,
   useDisclosure,
+  useMediaQuery,
 } from '@chakra-ui/react';
 import {
   HamburgerIcon,
@@ -71,6 +72,7 @@ const NAV_ITEMS = [
 
 const Navbar = () => {
   const { isOpen, onToggle } = useDisclosure();
+  const [isMobile] = useMediaQuery('(max-width: 770px)');
   return (
     <Box>
       <Flex
@@ -114,7 +116,11 @@ const Navbar = () => {
             <RouterLink to="/">izokirov</RouterLink>
           </Text>
 
-          <Flex display={{ base: 'none', md: 'flex' }} ml={10}>
+          <Flex
+            style={{ marginLeft: '60px' }}
+            display={{ base: 'none', md: 'flex' }}
+            ml={10}
+          >
             <DesktopNav />
           </Flex>
         </Flex>
@@ -124,31 +130,9 @@ const Navbar = () => {
           justify={'flex-end'}
           direction={'row'}
           spacing={6}
+          style={{ marginRight: !isMobile ? '60px' : '0' }}
         >
           <ColorModeSwitcher />
-          {/* <Button
-            as={'a'}
-            fontSize={'sm'}
-            fontWeight={400}
-            variant={'link'}
-            href={'#'}
-          >
-            Sign In
-          </Button> */}
-
-          {/* <Button
-            display={{ base: 'none', md: 'inline-flex' }}
-            fontSize={'sm'}
-            fontWeight={600}
-            color={'white'}
-            bg={'pink.400'}
-            href={'#'}
-            _hover={{
-              bg: 'pink.300',
-            }}
-          >
-            Sign Up
-          </Button> */}
         </Stack>
       </Flex>
 

@@ -8,26 +8,32 @@ const whatIDo = [
   {
     title: 'Frontend Development',
     className: 'fa-solid fa-code',
+    text: 'Experienced React developer. Worked with many frontend libraries. Material UI, Chakra UI, Bootstrap and Semantic UI',
   },
   {
     title: 'Backend Development',
     className: 'fa-solid fa-terminal',
+    text: 'Experienced in developing web applications and APIs in Node.js environment',
   },
   {
     title: 'Chatbot Development',
     className: 'fa-solid fa-robot',
+    text: 'I build conversational chatbots with Dialogflow CX & ES ',
   },
   {
     title: 'API Development & Integration',
     className: 'fa-solid fa-circle-nodes',
+    text: '',
   },
   {
     title: 'Database Design & Maintenance',
     className: 'fa-solid fa-database',
+    text: 'I work with SQL and NoSQL databases. MongoDB, Cloud Datastore & BigQuery just to name a few',
   },
   {
     title: 'Cloud Services',
     className: 'fa-solid fa-cloud',
+    text: 'Mainly, I work with Google Cloud Platform and deploy applications on App Engine or Cloud Functions',
   },
 ];
 
@@ -46,7 +52,7 @@ const ServicesSection = () => {
             style={{ fontFamily: 'monospace' }}
             color={'green.400'}
           >
-            Things I love
+            Things I do
           </Text>
         </Heading>
         <Text color={'gray.500'} fontSize={'xl'}>
@@ -93,9 +99,9 @@ const ServicesSection = () => {
               <FAIcons className={item.className} />
             </span>
             <Heading fontSize={'xl'}>{item.title}</Heading>
+            <br />
             <Text color={'gray.500'} fontSize={'md'}>
-              Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam
-              nonumy eirmod.
+              {item.text}
             </Text>
           </Feature>
         ))}

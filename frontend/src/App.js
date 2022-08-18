@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import Footer from './components/Footer';
 import Navbar from './components/Navbar';
 
@@ -9,15 +9,16 @@ import SingleProject from './pages/SingleProject';
 
 const App = () => {
   return (
-    <Router>
+    <BrowserRouter>
       <Navbar />
-      <Switch>
-        <Route path="/" exact component={HomePage} />
-        <Route path="/contact" exact component={Contact} />
-        <Route path="/projects/:projectId" exact component={SingleProject} />
-      </Switch>
+      <Routes>
+        <Route path="/" exact element={<HomePage />} />
+        <Route path="/contact" exact element={<Contact />} />
+        <Route path="/projects/:projectId" exact element={<SingleProject />} />
+        <Route path="*" element={<Navigate to="/" />} />
+      </Routes>
       <Footer />
-    </Router>
+    </BrowserRouter>
   );
 };
 
