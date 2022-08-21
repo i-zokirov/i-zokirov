@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import {
   Container,
   Stack,
@@ -11,11 +11,15 @@ import {
   List,
 } from '@chakra-ui/react';
 import { ChevronRightIcon } from '@chakra-ui/icons';
+import Pulse from 'react-reveal/Pulse';
+import useOnScreen from '../hooks/useOnScreen';
 import photo from '../assets/images/cv_photo.jpg';
 
 const AboutSection = () => {
+  const ref = useRef();
+  const isVisible = useOnScreen(ref);
   return (
-    <Container maxW={'7xl'}>
+    <Container maxW={'7xl'} id="about">
       <Stack
         align={'center'}
         justify={'center'}
@@ -40,19 +44,22 @@ const AboutSection = () => {
               style={{ borderRadius: '20px' }}
               width={{ base: '400px', sm: '200px', lg: '500px' }}
               src={photo}
-              alt="Dan Abramov"
+              alt="Ikboljon Zokirov"
             />
           </Box>
         </Stack>
         <Stack as="div" flex={1} spacing={{ base: 5, md: 10 }}>
           <Heading lineHeight={1.1} fontWeight={600}>
-            <Text
-              as={'span'}
-              style={{ fontFamily: 'monospace' }}
-              color={'green.400'}
-            >
-              About Me
-            </Text>
+            <Pulse spy={isVisible}>
+              <Text
+                as={'span'}
+                style={{ fontFamily: 'monospace' }}
+                color={'green.400'}
+                ref={ref}
+              >
+                Me, Myself & I
+              </Text>
+            </Pulse>
           </Heading>
 
           <Text color={'gray.500'}>

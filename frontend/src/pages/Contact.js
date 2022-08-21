@@ -27,7 +27,6 @@ const Contact = () => {
       style={{
         height: '100vh',
         width: '100%',
-        marginTop: '10vh',
       }}
     >
       <Box

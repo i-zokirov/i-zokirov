@@ -1,14 +1,15 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import { Container, Stack, Heading, Text } from '@chakra-ui/react';
 import Feature from './Feature';
 import FAIcons from './FAIcons';
+import Pulse from 'react-reveal/Pulse';
 import './services.css';
-
+import useOnScreen from '../hooks/useOnScreen';
 const whatIDo = [
   {
     title: 'Frontend Development',
     className: 'fa-solid fa-code',
-    text: 'Experienced React developer. Worked with many frontend libraries. Material UI, Chakra UI, Bootstrap and Semantic UI',
+    text: 'Experienced React developer. Proficient in Material UI, Chakra UI, Bootstrap and Semantic UI',
   },
   {
     title: 'Backend Development',
@@ -18,28 +19,31 @@ const whatIDo = [
   {
     title: 'Chatbot Development',
     className: 'fa-solid fa-robot',
-    text: 'I build conversational chatbots with Dialogflow CX & ES ',
+    text: 'Conversational chatbots with Dialogflow CX & ES ',
   },
   {
     title: 'API Development & Integration',
     className: 'fa-solid fa-circle-nodes',
-    text: '',
+    text: 'Creating & Integrating RESTful web API integrations',
   },
   {
     title: 'Database Design & Maintenance',
     className: 'fa-solid fa-database',
-    text: 'I work with SQL and NoSQL databases. MongoDB, Cloud Datastore & BigQuery just to name a few',
+    text: 'SQL and NoSQL databases. MongoDB, Cloud Datastore & BigQuery just to name a few',
   },
   {
     title: 'Cloud Services',
     className: 'fa-solid fa-cloud',
-    text: 'Mainly, I work with Google Cloud Platform and deploy applications on App Engine or Cloud Functions',
+    text: 'Worked with Google Cloud Platform (e.g. App Engine or Cloud Functions)',
   },
 ];
 
 const ServicesSection = () => {
+  const ref = useRef();
+  const isVisible = useOnScreen(ref);
+
   return (
-    <Container maxW={'7xl'} style={{ marginTop: '20px' }}>
+    <Container maxW={'7xl'} style={{ marginTop: '20px' }} id="services">
       <Stack
         spacing={{ base: 8, md: 10 }}
         as={Container}
@@ -47,20 +51,19 @@ const ServicesSection = () => {
         textAlign={'center'}
       >
         <Heading lineHeight={1.1} fontWeight={600}>
-          <Text
-            as={'span'}
-            style={{ fontFamily: 'monospace' }}
-            color={'green.400'}
-          >
-            Things I do
-          </Text>
+          <Pulse spy={isVisible}>
+            <Text
+              as={'span'}
+              style={{ fontFamily: 'monospace' }}
+              color={'green.400'}
+              ref={ref}
+            >
+              Things I do
+            </Text>
+          </Pulse>
         </Heading>
-        <Text color={'gray.500'} fontSize={'xl'}>
-          Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam
-          nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat,
-          sed diam voluptua.
-        </Text>
       </Stack>
+
       <Stack
         style={{
           display: 'flex',
@@ -90,8 +93,8 @@ const ServicesSection = () => {
                 alignItems: 'center',
                 display: 'flex',
                 borderRadius: '50%',
-                width: '150px',
-                height: '160px',
+                width: '100px',
+                height: '100px',
                 // boxShadow: 'inherit',
                 flexDirection: 'column',
               }}

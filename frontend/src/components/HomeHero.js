@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import {
   Container,
   Stack,
@@ -9,12 +9,15 @@ import {
   Button,
   Icon,
   IconButton,
-  useColorMode,
 } from '@chakra-ui/react';
-
+import Pulse from 'react-reveal/Pulse';
 import socialLinks from '../socialLinks';
 import CodeCard from './CodeCard';
+import useOnScreen from '../hooks/useOnScreen';
+import Typewriter from 'typewriter-effect';
+import Jump from 'react-reveal/Jump';
 
+import './hero.css';
 const HomeHero = () => {
   const [matches, setMatches] = useState(
     window.matchMedia('(min-width: 768px)').matches
@@ -26,9 +29,14 @@ const HomeHero = () => {
       .addEventListener('change', e => setMatches(e.matches));
   }, []);
 
-  const { colorMode } = useColorMode();
+  const ref = useRef();
+  const isVisible = useOnScreen(ref);
+
+  const buttonRef = useRef();
+  const isBtnVisible = useOnScreen(buttonRef);
+
   return (
-    <Container maxW={'7xl'}>
+    <Container maxW={'7xl'} id="homehero">
       <Stack
         align={'center'}
         justify={'center'}
@@ -36,32 +44,31 @@ const HomeHero = () => {
         py={{ base: 8, md: 10 }}
         direction={{ base: 'column', md: 'row' }}
       >
-        <Stack flex={1} spacing={{ base: 5, md: 10 }}>
+        <Stack flex={1} spacing={{ base: 5, md: 10 }} marginTop={'60px'}>
           <Heading
             lineHeight={1.1}
             fontWeight={600}
             align={matches ? 'left' : 'center'}
           >
-            <Text
-              as={'span'}
-              style={{ fontFamily: 'monospace' }}
-              color={'green.400'}
-            >
-              Hello World!
-            </Text>
+            <Pulse spy={isVisible}>
+              <Text
+                as={'span'}
+                style={{ fontFamily: 'monospace' }}
+                color={'green.400'}
+                ref={ref}
+              >
+                Hello World!
+              </Text>
+            </Pulse>
           </Heading>
           <Heading
             lineHeight={1}
             fontWeight={650}
             fontSize={{ base: '3xl', sm: '4xl', lg: '6xl' }}
           >
-            <Text as={'p'} color={'gray.400'} position={'relative'}>
-              I’m Ikboljon
-            </Text>
-
             <Text
-              color={'gray.500'}
               as={'p'}
+              color={'gray.500'}
               position={'relative'}
               _after={{
                 content: "''",
@@ -72,7 +79,15 @@ const HomeHero = () => {
                 zIndex: -1,
               }}
             >
-              I build stuff for the web.
+              <Typewriter
+                onInit={typewriter => {
+                  typewriter
+                    .typeString('I’m Ikboljon.')
+                    .pauseFor(1000)
+                    .typeString('<br/> I build stuff for the web.')
+                    .start();
+                }}
+              />
             </Text>
           </Heading>
           <Text color={'gray.500'}>
@@ -80,23 +95,27 @@ const HomeHero = () => {
             designing exceptional digital experiences.
           </Text>
           <Text color={'gray.500'}>
-            Currently, I’m focused on building web applications, conversational
-            chatbots and creating RESTful web API integrations at Capgemini.
+            Currently, I’m focused on building single-page web applications,
+            conversational chatbots and creating & integrating RESTful web API
+            integrations at Capgemini.
           </Text>
           <Stack
             spacing={{ base: 4, sm: 6 }}
             direction={{ base: 'column', sm: 'row' }}
             align={matches ? 'left' : 'center'}
           >
-            <Button
-              size={'lg'}
-              colorScheme="teal"
-              variant="outline"
-              fontWeight={'normal'}
-              px={6}
-            >
-              Download CV
-            </Button>
+            <Jump spy={isBtnVisible}>
+              <Button
+                size={'lg'}
+                colorScheme="teal"
+                variant="outline"
+                fontWeight={'normal'}
+                px={6}
+                ref={buttonRef}
+              >
+                Download CV
+              </Button>
+            </Jump>
           </Stack>
           <Box align={matches ? 'left' : 'center'}>
             {socialLinks.map(item => (

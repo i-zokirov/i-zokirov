@@ -16,6 +16,7 @@ import {
   useDisclosure,
   useMediaQuery,
 } from '@chakra-ui/react';
+import { Link as ScrollLink } from 'react-scroll';
 import {
   HamburgerIcon,
   CloseIcon,
@@ -28,46 +29,30 @@ import ColorModeSwitcher from '../ColorModeSwitcher';
 const NAV_ITEMS = [
   {
     label: 'Meet Ikboljon',
-    href: '/',
+    href: 'about',
+  },
+  {
+    label: 'Things I do',
+    href: 'services',
   },
   {
     label: 'Recent Projects',
-    children: [
-      {
-        label: 'Pia Muszer',
-        subLabel: 'Website project for Skating Coach',
-        href: '/projects/pia-muszer',
-      },
-      //   {
-      //     label: 'New & Noteworthy',
-      //     subLabel: 'Up-and-coming Designers',
-      //     href: '#',
-      //   },
-    ],
+    href: 'projects',
   },
-  //   {
-  //     label: 'Find Work',
-  //     children: [
-  //       {
-  //         label: 'Job Board',
-  //         subLabel: 'Find your dream design job',
-  //         href: '#',
-  //       },
-  //       {
-  //         label: 'Freelance Projects',
-  //         subLabel: 'An exclusive list for contract work',
-  //         href: '#',
-  //       },
-  //     ],
-  //   },
-  // {
-  //   label: 'MyBlog',
-  //   href: '/blog',
-  // },
   {
     label: 'Contact',
-    href: '/contact',
+    href: 'contact',
   },
+  // {
+  //   label: 'Recent Projects',
+  //   children: [
+  //     {
+  //       label: 'Pia Muszer',
+  //       subLabel: 'Website project for Skating Coach',
+  //       href: '/projects/pia-muszer',
+  //     },
+  //   ],
+  // },
 ];
 
 const Navbar = () => {
@@ -85,6 +70,9 @@ const Navbar = () => {
         borderStyle={'solid'}
         borderColor={useColorModeValue('gray.200', 'gray.900')}
         align={'center'}
+        position="fixed"
+        width={'100%'}
+        zIndex="100000"
       >
         <Flex
           flex={{ base: 1, md: 'auto' }}
@@ -113,7 +101,15 @@ const Navbar = () => {
               className="fa-solid fa-terminal"
             ></i>{' '}
             <span> </span>
-            <RouterLink to="/">izokirov</RouterLink>
+            <ScrollLink
+              activeClass="active"
+              smooth
+              spy
+              to="homehero"
+              style={{ cursor: 'pointer' }}
+            >
+              izokirov
+            </ScrollLink>
           </Text>
 
           <Flex
@@ -154,20 +150,40 @@ const DesktopNav = () => {
         <Box key={navItem.label}>
           <Popover trigger={'hover'} placement={'bottom-start'}>
             <PopoverTrigger>
-              <Link
-                p={2}
-                to={navItem.href ?? '#'}
-                fontSize={'sm'}
-                fontWeight={500}
-                color={linkColor}
-                _hover={{
-                  textDecoration: 'none',
-                  color: linkHoverColor,
-                }}
-                as={RouterLink}
-              >
-                {navItem.label}
-              </Link>
+              {navItem.href.includes('/') ? (
+                <Link
+                  p={2}
+                  to={navItem.href ?? '#'}
+                  fontSize={'sm'}
+                  fontWeight={500}
+                  color={linkColor}
+                  _hover={{
+                    textDecoration: 'none',
+                    color: linkHoverColor,
+                  }}
+                  as={RouterLink}
+                >
+                  {navItem.label}
+                </Link>
+              ) : (
+                <Link
+                  p={2}
+                  to={navItem.href ?? '#'}
+                  fontSize={'sm'}
+                  fontWeight={500}
+                  color={linkColor}
+                  _hover={{
+                    textDecoration: 'none',
+                    color: linkHoverColor,
+                  }}
+                  as={ScrollLink}
+                  activeClass="active"
+                  smooth
+                  spy
+                >
+                  {navItem.label}
+                </Link>
+              )}
             </PopoverTrigger>
 
             {navItem.children && (
@@ -202,7 +218,7 @@ const DesktopSubNav = ({ label, href, subLabel }) => {
       p={2}
       rounded={'md'}
       _hover={{ bg: useColorModeValue('pink.50', 'gray.900') }}
-      as={RouterLink}
+      as={href.includes('/') ? ScrollLink : RouterLink}
     >
       <Stack direction={'row'} align={'center'}>
         <Box>
@@ -237,6 +253,9 @@ const MobileNav = () => {
       bg={useColorModeValue('white', 'gray.800')}
       p={4}
       display={{ md: 'none' }}
+      position="fixed"
+      top="0"
+      zIndex={'10000'}
     >
       {NAV_ITEMS.map(navItem => (
         <MobileNavItem key={navItem.label} {...navItem} />
@@ -245,37 +264,68 @@ const MobileNav = () => {
   );
 };
 
+const MobileNavItemChild = ({ label, isOpen, children }) => {
+  return (
+    <>
+      <Text fontWeight={600} color={useColorModeValue('gray.600', 'gray.200')}>
+        {label}
+      </Text>
+      {children && (
+        <Icon
+          as={ChevronDownIcon}
+          transition={'all .25s ease-in-out'}
+          transform={isOpen ? 'rotate(180deg)' : ''}
+          w={6}
+          h={6}
+        />
+      )}
+    </>
+  );
+};
+
 const MobileNavItem = ({ label, children, href }) => {
   const { isOpen, onToggle } = useDisclosure();
 
   return (
     <Stack spacing={4} onClick={children && onToggle}>
-      <Flex
-        py={2}
-        as={RouterLink}
-        to={href ?? '#'}
-        justify={'space-between'}
-        align={'center'}
-        _hover={{
-          textDecoration: 'none',
-        }}
-      >
-        <Text
-          fontWeight={600}
-          color={useColorModeValue('gray.600', 'gray.200')}
+      {href.includes('/') ? (
+        <Flex
+          py={2}
+          as={RouterLink}
+          to={href ?? '#'}
+          justify={'space-between'}
+          align={'center'}
+          _hover={{
+            textDecoration: 'none',
+          }}
         >
-          {label}
-        </Text>
-        {children && (
-          <Icon
-            as={ChevronDownIcon}
-            transition={'all .25s ease-in-out'}
-            transform={isOpen ? 'rotate(180deg)' : ''}
-            w={6}
-            h={6}
+          <MobileNavItemChild
+            label={label}
+            isOpen={isOpen}
+            children={children}
           />
-        )}
-      </Flex>
+        </Flex>
+      ) : (
+        <Flex
+          py={2}
+          as={ScrollLink}
+          to={href ?? '#'}
+          justify={'space-between'}
+          align={'center'}
+          _hover={{
+            textDecoration: 'none',
+          }}
+          activeClass="active"
+          smooth
+          spy
+        >
+          <MobileNavItemChild
+            label={label}
+            isOpen={isOpen}
+            children={children}
+          />
+        </Flex>
+      )}
 
       <Collapse in={isOpen} animateOpacity style={{ marginTop: '0!important' }}>
         <Stack

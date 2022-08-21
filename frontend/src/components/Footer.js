@@ -7,6 +7,7 @@ import {
   Link,
   useColorModeValue,
 } from '@chakra-ui/react';
+import { Link as ScrollLink } from 'react-scroll';
 import { Link as RouterLink } from 'react-router-dom';
 const Footer = () => {
   return (
@@ -24,11 +25,11 @@ const Footer = () => {
         align={{ base: 'center', md: 'center' }}
       >
         <Stack direction={'row'} spacing={6}>
-          <Link as={RouterLink} to={'/'}>
+          <Link as={ScrollLink} to={'homehero'} activeClass="active" smooth spy>
             Home
           </Link>
 
-          <Link as={RouterLink} to={'/contact'}>
+          <Link as={ScrollLink} to={'contact'} activeClass="active" smooth spy>
             Contact
           </Link>
         </Stack>
