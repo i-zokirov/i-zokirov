@@ -15,7 +15,7 @@ import { AttentionSeeker } from 'react-awesome-reveal';
 import socialLinks from '../socialLinks';
 import CodeCard from './CodeCard';
 import Typewriter from 'typewriter-effect';
-
+import CV from '../assets/files/Ikboljon_Zokirov_CV.pdf';
 import './hero.css';
 const HomeHero = () => {
   const [matches, setMatches] = useState(
@@ -103,6 +103,10 @@ const HomeHero = () => {
                 variant="outline"
                 fontWeight={'normal'}
                 px={6}
+                as={'a'}
+                href={CV}
+                download="Ikboljon_Zokirov_CV"
+                target={'_blank'}
               >
                 Download CV
               </Button>
