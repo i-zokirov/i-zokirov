@@ -1,7 +1,6 @@
 ### Hi stranger 👋
 
-- 🌱 I’m currently learning advanced concepts in Node.js and best practices.
-- 📫 How to reach me: send email to izokirov@outlook.com
+-   📫 How to reach me: send email to izokirov@outlook.com
 
 <!--
 **i-zokirov/i-zokirov** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
