@@ -27,7 +27,7 @@ const whatIDo = [
     text: 'Creating & Integrating RESTful web API integrations',
   },
   {
-    title: 'Database Design & Maintenance',
+    title: 'Database Design',
     className: 'fa-solid fa-database',
     text: 'SQL and NoSQL databases. MongoDB, Cloud Datastore & BigQuery just to name a few',
   },

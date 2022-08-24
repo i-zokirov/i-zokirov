@@ -67,7 +67,7 @@ const HomeHero = () => {
             fontSize={{ base: '3xl', sm: '4xl', lg: '6xl' }}
           >
             <Text
-              as={'p'}
+              as={'div'}
               color={'gray.500'}
               position={'relative'}
               _after={{

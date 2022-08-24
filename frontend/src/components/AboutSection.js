@@ -11,9 +11,27 @@ import {
   List,
 } from '@chakra-ui/react';
 import { ChevronRightIcon } from '@chakra-ui/icons';
+import { Link } from '@chakra-ui/react';
+import { ExternalLinkIcon } from '@chakra-ui/icons';
+import { Link as ScrollLink } from 'react-scroll';
 import Pulse from 'react-reveal/Pulse';
 import useOnScreen from '../hooks/useOnScreen';
 import photo from '../assets/images/cv_photo.jpg';
+
+const techs = [
+  'React.js',
+  'Redux',
+  'JavaScript',
+  'Node.js',
+  'Express.js',
+  'TypeScript',
+  'Socket.io',
+  'Google Cloud Platform',
+  'Dialogflow ES & CX',
+  'Material UI',
+  'Booststrap',
+  'HTML & CSS',
+];
 
 const AboutSection = () => {
   const ref = useRef();
@@ -63,63 +81,32 @@ const AboutSection = () => {
           </Heading>
 
           <Text color={'gray.500'}>
-            I’m a software engineer specializing in building (and occasionally
-            designing) exceptional digital experiences. Currently, I’m focused
-            on building chatbots and creating API integrations at Capgemini.
+            I’m a JavaScript developer specializing in building full-stack web
+            applications. Currently, I’m working at{' '}
+            <Link href={'https://www.capgemini.com/'} isExternal>
+              Capgemini <ExternalLinkIcon mx="2px" />
+            </Link>{' '}
+            and building exceptional digital experiences.
           </Text>
-          <Text color={'gray.500'}>
-            I’m a software engineer specializing in building (and occasionally
-            designing) exceptional digital experiences. Currently, I’m focused
-            on building chatbots and creating API integrations at Capgemini.
-          </Text>
+
           <Text as="div" color={'gray.500'}>
             Here are a few technologies I’ve been working with recently:
-            <span style={{ display: 'flex' }}>
-              <div>
-                <List spacing={3}>
-                  <ListItem>
-                    <ListIcon as={ChevronRightIcon} color="green.600" />
-                    <Text color={'gray.500'} as="span">
-                      React & Redux
-                    </Text>
-                  </ListItem>
-                  <ListItem>
-                    <ListIcon as={ChevronRightIcon} color="green.600" />
-                    <Text color={'gray.500'} as="span">
-                      Node.js & Express.js
-                    </Text>
-                  </ListItem>
-                  <ListItem>
-                    <ListIcon as={ChevronRightIcon} color="green.600" />
-                    <Text color={'gray.500'} as="span">
-                      JavaScript (ES6+)
-                    </Text>
-                  </ListItem>
-                </List>
-              </div>
-              <div style={{ paddingLeft: '20px' }}>
-                <List spacing={3}>
-                  <ListItem>
-                    <ListIcon as={ChevronRightIcon} color="green.600" />
-                    <Text color={'gray.500'} as="span">
-                      TypeScript
-                    </Text>
-                  </ListItem>
-                  <ListItem>
-                    <ListIcon as={ChevronRightIcon} color="green.600" />
-                    <Text color={'gray.500'} as="span">
-                      Google Cloud Platform
-                    </Text>
-                  </ListItem>
-                  <ListItem>
-                    <ListIcon as={ChevronRightIcon} color="green.600" />
-                    <Text color={'gray.500'} as="span">
-                      Dialogflow
-                    </Text>
-                  </ListItem>
-                </List>
-              </div>
-            </span>
+            <List>
+              {techs.map(tech => (
+                <ListItem key={tech}>
+                  <ListIcon as={ChevronRightIcon} color="green.600" />
+                  <Text color={'gray.500'} as="span">
+                    {tech}
+                  </Text>
+                </ListItem>
+              ))}
+            </List>
+          </Text>
+          <Text color={'gray.500'}>
+            <Link as={ScrollLink} to="homehero" activeClass="active" smooth spy>
+              Download my CV{' '}
+            </Link>{' '}
+            to know more about me.
           </Text>
         </Stack>
       </Stack>
