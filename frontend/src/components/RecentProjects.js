@@ -4,16 +4,16 @@ import './recentprojects.css';
 import SingleProjectCard from './SingleProjectCard';
 import recentprojectslist from '../static/RecentProjectsList';
 
-import Pulse from 'react-reveal/Pulse';
-import useOnScreen from '../hooks/useOnScreen';
+import { AttentionSeeker } from 'react-awesome-reveal';
+
 const RecentProjects = () => {
   const ref = useRef();
-  const isVisible = useOnScreen(ref);
+
   return (
     <Container maxW={'7xl'} style={{ marginTop: '0px' }} id="projects">
       <Stack as={Container} maxW={'3xl'} textAlign={'center'}>
         <Heading lineHeight={1} fontWeight={600}>
-          <Pulse spy={isVisible}>
+          <AttentionSeeker effect="pulse">
             <Text
               as={'span'}
               style={{ fontFamily: 'monospace' }}
@@ -22,7 +22,7 @@ const RecentProjects = () => {
             >
               Recent personal noteworthy projects
             </Text>
-          </Pulse>
+          </AttentionSeeker>
         </Heading>
       </Stack>
 

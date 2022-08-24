@@ -2,9 +2,14 @@
     "name": "i-zokirov",
     "version": "1.0.0",
     "description": "",
+    "type": "module",
     "main": "index.js",
     "scripts": {
-        "test": "echo \"Error: no test specified\" && exit 1"
+        "start": "node backend/index",
+        "server": "nodemon backend/index",
+        "frontend": "npm start --prefix frontend",
+        "dev": "concurrently \"npm run server\" \"npm run frontend\"",
+        "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --force --prefix frontend && npm run build --prefix frontend"
     },
     "author": "Ikboljon Zokirov",
     "license": "ISC",

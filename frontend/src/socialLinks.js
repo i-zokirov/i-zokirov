@@ -17,12 +17,12 @@ const socialLinks = [
     iconClass: 'fa-brands fa-telegram',
     color: '#229ED9',
   },
-  {
-    name: 'instagram',
-    link: 'https://www.instagram.com/ikboljon_zokirov',
-    iconClass: 'fa-brands fa-instagram',
-    color: '#5851DB ',
-  },
+  // {
+  //   name: 'instagram',
+  //   link: 'https://www.instagram.com/ikboljon_zokirov',
+  //   iconClass: 'fa-brands fa-instagram',
+  //   color: '#5851DB ',
+  // },
 ];
 
 export default socialLinks;

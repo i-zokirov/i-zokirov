@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect } from 'react';
 import {
   Container,
   Stack,
@@ -9,13 +9,12 @@ import {
   Button,
   Icon,
   IconButton,
+  Tooltip,
 } from '@chakra-ui/react';
-import Pulse from 'react-reveal/Pulse';
+import { AttentionSeeker } from 'react-awesome-reveal';
 import socialLinks from '../socialLinks';
 import CodeCard from './CodeCard';
-import useOnScreen from '../hooks/useOnScreen';
 import Typewriter from 'typewriter-effect';
-import Jump from 'react-reveal/Jump';
 
 import './hero.css';
 const HomeHero = () => {
@@ -28,12 +27,6 @@ const HomeHero = () => {
       .matchMedia('(min-width: 768px)')
       .addEventListener('change', e => setMatches(e.matches));
   }, []);
-
-  const ref = useRef();
-  const isVisible = useOnScreen(ref);
-
-  const buttonRef = useRef();
-  const isBtnVisible = useOnScreen(buttonRef);
 
   return (
     <Container maxW={'7xl'} id="homehero">
@@ -50,16 +43,15 @@ const HomeHero = () => {
             fontWeight={600}
             align={matches ? 'left' : 'center'}
           >
-            <Pulse spy={isVisible}>
+            <AttentionSeeker effect="pulse">
               <Text
                 as={'span'}
                 style={{ fontFamily: 'monospace' }}
                 color={'green.400'}
-                ref={ref}
               >
                 Hello World!
               </Text>
-            </Pulse>
+            </AttentionSeeker>
           </Heading>
           <Heading
             lineHeight={1}
@@ -104,40 +96,40 @@ const HomeHero = () => {
             direction={{ base: 'column', sm: 'row' }}
             align={matches ? 'left' : 'center'}
           >
-            <Jump spy={isBtnVisible}>
+            <AttentionSeeker effect="tada">
               <Button
                 size={'lg'}
                 colorScheme="teal"
                 variant="outline"
                 fontWeight={'normal'}
                 px={6}
-                ref={buttonRef}
               >
                 Download CV
               </Button>
-            </Jump>
+            </AttentionSeeker>
           </Stack>
           <Box align={matches ? 'left' : 'center'}>
             {socialLinks.map(item => (
-              <IconButton
-                style={{ margin: '5px' }}
-                key={item.name}
-                size="lg"
-                fontSize="30px"
-                variant="ghost"
-                color="current"
-                icon={
-                  <a
-                    href={item.link}
-                    target="_blank"
-                    rel="noreferrer"
-                    className={`social-buttons__button social-button social-button--${item.name}`}
-                    aria-label="Linkedin"
-                  >
-                    <i className={item.iconClass}></i>
-                  </a>
-                }
-              />
+              <Tooltip key={item.name} label={`Find me on ${item.name}`}>
+                <IconButton
+                  style={{ margin: '5px' }}
+                  size="lg"
+                  fontSize="30px"
+                  variant="ghost"
+                  color="current"
+                  icon={
+                    <a
+                      href={item.link}
+                      target="_blank"
+                      rel="noreferrer"
+                      className={`social-buttons__button social-button social-button--${item.name}`}
+                      aria-label="Linkedin"
+                    >
+                      <i className={item.iconClass}></i>
+                    </a>
+                  }
+                />
+              </Tooltip>
             ))}
           </Box>
         </Stack>

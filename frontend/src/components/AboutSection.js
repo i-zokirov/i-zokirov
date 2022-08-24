@@ -14,8 +14,8 @@ import { ChevronRightIcon } from '@chakra-ui/icons';
 import { Link } from '@chakra-ui/react';
 import { ExternalLinkIcon } from '@chakra-ui/icons';
 import { Link as ScrollLink } from 'react-scroll';
-import Pulse from 'react-reveal/Pulse';
-import useOnScreen from '../hooks/useOnScreen';
+import { AttentionSeeker } from 'react-awesome-reveal';
+
 import photo from '../assets/images/cv_photo.jpg';
 
 const techs = [
@@ -35,7 +35,6 @@ const techs = [
 
 const AboutSection = () => {
   const ref = useRef();
-  const isVisible = useOnScreen(ref);
   return (
     <Container maxW={'7xl'} id="about">
       <Stack
@@ -68,7 +67,7 @@ const AboutSection = () => {
         </Stack>
         <Stack as="div" flex={1} spacing={{ base: 5, md: 10 }}>
           <Heading lineHeight={1.1} fontWeight={600}>
-            <Pulse spy={isVisible}>
+            <AttentionSeeker effect="pulse">
               <Text
                 as={'span'}
                 style={{ fontFamily: 'monospace' }}
@@ -77,7 +76,7 @@ const AboutSection = () => {
               >
                 Me, Myself & I
               </Text>
-            </Pulse>
+            </AttentionSeeker>
           </Heading>
 
           <Text color={'gray.500'}>

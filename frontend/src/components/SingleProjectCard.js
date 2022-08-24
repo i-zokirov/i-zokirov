@@ -2,11 +2,10 @@ import React from 'react';
 import { Heading, Text, IconButton, Tooltip } from '@chakra-ui/react';
 import Feature from './Feature';
 import FAIcons from './FAIcons';
-import Roll from 'react-reveal/Roll';
+
 const SingleProjectCard = ({ project }) => {
   const { sourceLink, repoLink, demoLink, title, text, stack } = project;
   return (
-    // <Roll left>
     <Feature
       justifyContent="center"
       align="left"
@@ -81,7 +80,6 @@ const SingleProjectCard = ({ project }) => {
         </Text>
       </div>
     </Feature>
-    // </Roll>
   );
 };
 

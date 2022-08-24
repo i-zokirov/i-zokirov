@@ -10,9 +10,9 @@ const HomePage = () => {
     <>
       <HomeHero />
       <AboutSection />
-      <ServicesSection id="services" />
+      <ServicesSection />
       {/* <FeaturedProjects /> */}
-      <RecentProjects id="projects" />
+      <RecentProjects />
       <Contact />
     </>
   );

@@ -1,10 +1,10 @@
 import React, { useRef } from 'react';
 import { Container, Stack, Heading, Text } from '@chakra-ui/react';
+import { AttentionSeeker } from 'react-awesome-reveal';
 import Feature from './Feature';
 import FAIcons from './FAIcons';
-import Pulse from 'react-reveal/Pulse';
 import './services.css';
-import useOnScreen from '../hooks/useOnScreen';
+
 const whatIDo = [
   {
     title: 'Frontend Development',
@@ -40,18 +40,17 @@ const whatIDo = [
 
 const ServicesSection = () => {
   const ref = useRef();
-  const isVisible = useOnScreen(ref);
 
   return (
-    <Container maxW={'7xl'} style={{ marginTop: '20px' }} id="services">
+    <Container maxW={'7xl'} style={{ marginTop: '40px' }}>
       <Stack
         spacing={{ base: 8, md: 10 }}
         as={Container}
         maxW={'3xl'}
         textAlign={'center'}
       >
-        <Heading lineHeight={1.1} fontWeight={600}>
-          <Pulse spy={isVisible}>
+        <Heading lineHeight={1.1} fontWeight={600} id="services">
+          <AttentionSeeker effect="pulse">
             <Text
               as={'span'}
               style={{ fontFamily: 'monospace' }}
@@ -60,7 +59,7 @@ const ServicesSection = () => {
             >
               Things I do
             </Text>
-          </Pulse>
+          </AttentionSeeker>
         </Heading>
       </Stack>
 
