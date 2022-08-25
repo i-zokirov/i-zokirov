@@ -1,23 +1,29 @@
 import express from "express";
-import path from "path";
+import cors from "cors";
+import helmet from "helmet";
 import { notFound, errorHandler } from "./middleware/errorHandlers.js";
-
-const __dirname = path.resolve();
+import contactformRouter from "./routes/contactform.js";
 const app = express();
 
-app.use(express.static(path.join(__dirname, "/frontend/build")));
+// MIDDLEWARE
+app.use(helmet());
+app.use(
+    cors({
+        origin: "https://izokirov.me",
+        methods: "GET,POST",
+        preflightContinue: true,
+        optionsSuccessStatus: 200,
+    })
+);
+app.use(express.json());
 
-// SERVE FRONTEND AS STATIC FILES
-app.get("*", (req, res) => {
-    res.sendFile(path.resolve(__dirname, "frontend", "build", "index.html"));
-});
+// ROUTE HANDLERS
+app.use("/api", contactformRouter);
 
 // ERROR HANDLERS
 app.use(notFound);
 app.use(errorHandler);
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () =>
-    console.log(
-        `Server is running in ${process.env.NODE_ENV} environment. \nServer PORT: ${PORT}`
-    )
+    console.log(`Environment: ${process.env.NODE_ENV}  \nServer PORT: ${PORT}`)
 );

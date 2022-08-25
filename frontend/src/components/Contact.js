@@ -21,11 +21,17 @@ import { BsPerson } from 'react-icons/bs';
 import FAIcons from './FAIcons';
 import socialLinks from '../socialLinks';
 import { AttentionSeeker } from 'react-awesome-reveal';
+import axios from 'axios';
 
 const Contact = () => {
   const ref = useRef();
 
   const [isMobile] = useMediaQuery('(max-width: 900px)');
+
+  const handleSubmit = () => {
+    axios.post('http://localhost:5000/api/contactform');
+  };
+
   return (
     <Container maxW={'7xl'} id="contact">
       <Stack
@@ -102,7 +108,12 @@ const Contact = () => {
           </FormControl>
 
           <FormControl id="name" m={2}>
-            <Button colorScheme="teal" variant="solid" _hover={{}}>
+            <Button
+              onClick={handleSubmit}
+              colorScheme="teal"
+              variant="solid"
+              _hover={{}}
+            >
               Send Message
             </Button>
           </FormControl>
