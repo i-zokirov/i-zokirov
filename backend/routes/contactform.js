@@ -16,6 +16,7 @@ router.post(
     "/contactform",
 
     asyncHandler(async (req, res) => {
+        console.log(req.body);
         const { body, senderEmail, senderName } = req.body;
         const newContact = {
             name: senderName,

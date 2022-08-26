@@ -35,6 +35,14 @@ const recentprojectslist = [
     sourceLink: 'https://github.com/i-zokirov/protechgear',
   },
   {
+    title: 'Salahtimes',
+    text: 'A simple react application that shows salah times around cities in Poland.',
+    stack: ['React', 'Nodejs', 'Express', 'React Bootstrap', 'API'],
+    demoLink: 'https://salahtimes-dev.herokuapp.com/',
+    repoLink: 'https://github.com/i-zokirov/salahtimes.pl-with-react',
+    sourceLink: 'https://github.com/i-zokirov/salahtimes.pl-with-react',
+  },
+  {
     title: 'Gmail API',
     text: 'A simple microservice which sends email based HTTP request received.',
     stack: ['googleapis', 'nodejs'],

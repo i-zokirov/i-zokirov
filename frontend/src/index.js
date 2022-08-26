@@ -5,6 +5,8 @@ import reportWebVitals from './reportWebVitals';
 import * as serviceWorker from './serviceWorker';
 import { ChakraProvider } from '@chakra-ui/react';
 import { ColorModeScript } from '@chakra-ui/react';
+import { Provider } from 'react-redux';
+import store from './redux/store';
 import theme from './theme';
 const container = document.getElementById('root');
 const root = createRoot(container);
@@ -12,7 +14,9 @@ root.render(
   <StrictMode>
     <ColorModeScript initialColorMode={theme.config.initialColorMode} />
     <ChakraProvider theme={theme}>
-      <App />
+      <Provider store={store}>
+        <App />
+      </Provider>
     </ChakraProvider>
   </StrictMode>
 );
